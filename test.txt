@@ -1,0 +1,55 @@
+Тестовый txt
+
+
+{
+    "data": [
+        {
+            "txId": "{{$guid}}",
+            "scenario": [
+                {
+                    "channel": "viber",
+                    "recipient": {
+                        "type": "MSISDN",
+                        "value": 79057098285,
+                        "profileName": "Testname"
+                    },
+                    "sender": "viberInfobip",
+                    "text": "Текст",
+                    "attachments": [
+                        {
+                            "type": "IMAGE",
+                            "url": "http://content.url"
+                        }
+                    ],
+                    "buttons": [
+                        {
+                            "caption": "button text",
+                            "action": "https://action.url"
+                        }
+                    ],
+                    "failover": {
+                        "ttl": 300,
+                        "condition_status": "DELIVERED"
+                    }
+                }
+            ],
+            "callback": {
+                "baseUrl": "http://10.208.3.12:8180/http-resp-new/resp/login",
+                "service": {
+                    "id": "crp-adapter",
+                    "tag": "crp-adapter-http"
+                }
+            },
+            "meta": {
+                "departmentId": "b1c5105f-664e-49a1-b6b8-d550d606bcef",
+                "tenantId": "ce01c826-ee5b-4268-86f3-d1d6b8e85c0f",
+                "requestSource": "SMPP",
+                "userId": "637d848e-08b2-46c5-b283-5f63cea0a970",
+                "username": "user2"
+            },
+            "trackData": {
+                "CALLBACK_URL": "http://10.208.3.12:8180/http-resp-new/resp/login"
+            }
+        }
+    ]
+}
