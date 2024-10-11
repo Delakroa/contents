@@ -1,0 +1,181 @@
+Проружают дерево секций
+При первом прогрзе передаю айди секций списком и выводится весь список тестов по ним
+Делаю запрос по айди секции и получают список кейсов этой секции включая вложенные в нее тесты
+
+
+
+
+
+
+Создание плана запрос:
+POST https://seventech.testit.software/api/v2/testPlans
+
+{
+    "name": "Для удаления, тестовый",
+    "description": "<p class=\"tiptap-text\">Описание</p>",
+    "productName": "уау",
+    "build": "уауа",
+    "startDate": "2024-10-04T13:58:29.302Z",
+    "endDate": "2024-10-13T13:58:31.757Z",
+    "hasAutomaticDurationTimer": true,
+    "status": "New",
+    "tags": [
+        {
+            "name": "каскад"
+        }
+    ],
+    "testSuites": [],
+    "attributes": {},
+    "projectId": "21fd094f-eef6-400f-9309-bc96da740f41"
+}
+
+Ответ: 
+201 Created
+{
+    "status": "New",
+    "startedOn": null,
+    "completedOn": null,
+    "createdDate": "2024-10-04T13:58:48.553Z",
+    "modifiedDate": "2024-10-04T13:58:48.553Z",
+    "createdById": "e50b613f-4f42-4261-affd-a5b069b71dc1",
+    "modifiedById": "e50b613f-4f42-4261-affd-a5b069b71dc1",
+    "globalId": 88146,
+    "isDeleted": false,
+    "lockedDate": null,
+    "id": "1cfeaec1-936c-4be9-8f35-4b2c653695a3",
+    "lockedById": null,
+    "tags": [
+        {
+            "name": "каскад"
+        }
+    ],
+    "name": "Для удаления, тестовый",
+    "startDate": "2024-10-04T13:58:29.302Z",
+    "endDate": "2024-10-13T13:58:31.757Z",
+    "description": "<p class=\"tiptap-text\">Описание</p>",
+    "build": "версия",
+    "projectId": "21fd094f-eef6-400f-9309-bc96da740f41",
+    "productName": "название сервиса",
+    "hasAutomaticDurationTimer": true,
+    "attributes": {}
+}
+
+
+
+Переход в тест-план 
+GET https://seventech.testit.software/api/v2/testPlans/88146
+
+Ответ:
+{
+    "status": "New",
+    "startedOn": null,
+    "completedOn": null,
+    "createdDate": "2024-10-04T13:58:48.553Z",
+    "modifiedDate": "2024-10-04T13:58:48.553Z",
+    "createdById": "e50b613f-4f42-4261-affd-a5b069b71dc1",
+    "modifiedById": "e50b613f-4f42-4261-affd-a5b069b71dc1",
+    "globalId": 88146,
+    "isDeleted": false,
+    "lockedDate": null,
+    "id": "1cfeaec1-936c-4be9-8f35-4b2c653695a3",
+    "lockedById": null,
+    "tags": [
+        {
+            "name": "каскад"
+        }
+    ],
+    "name": "Для удаления, тестовый",
+    "startDate": "2024-10-04T13:58:29.302Z",
+    "endDate": "2024-10-13T13:58:31.757Z",
+    "description": "<p class=\"tiptap-text\">Описание</p>",
+    "build": "уауа",
+    "projectId": "21fd094f-eef6-400f-9309-bc96da740f41",
+    "productName": "уау",
+    "hasAutomaticDurationTimer": true,
+    "attributes": {}
+}
+
+
+Запрос списка тестов для добавления в ран
+POST https://seventech.testit.software/api/v2/projects/21fd094f-eef6-400f-9309-bc96da740f41/workItems/search?orderBy=OrderRank%20asc&skip=0&take=100
+ Тело
+{
+    "filter": {
+        "types": [
+            "TestCases",
+            "CheckLists"
+        ],
+        "isDeleted": false
+    },
+    "extractionModel": {
+        "ids": {},
+        "projectIds": {
+            "include": [
+                "21fd094f-eef6-400f-9309-bc96da740f41"
+            ]
+        }
+    }
+}
+Ответ: 
+[
+    {
+        "id": "2943f519-72ef-405d-aa08-ba8738e5f2d2",
+        "versionId": "a92407fa-94a9-49de-b01b-b5d866a751d7",
+        "versionNumber": 4,
+        "name": "Токен для агента контакт-центра",
+        "entityTypeName": "TestCases",
+        "projectId": "21fd094f-eef6-400f-9309-bc96da740f41",
+        "sectionId": "3fe94b1e-5419-4aae-93cc-dcd87f735cb3",
+        "sectionName": "Инструкции",
+        "isAutomated": false,
+        "globalId": 83350,
+        "duration": 300000,
+        "medianDuration": null,
+        "attributes": {
+            "027fe297-34db-47df-92b9-8e2f6b7ae736": "Actual",
+            "879455c8-4e0c-4e65-8e08-c4bfe4aba71f": "c6830247-49ff-418c-86ec-7ef6192c601a",
+            "d44c9bf7-f663-41f5-ba3b-29c7eeb83074": "2199b736-f5db-4591-bbb0-1c0389ac13a8"
+        },
+        "createdById": "e50b613f-4f42-4261-affd-a5b069b71dc1",
+        "modifiedById": "e50b613f-4f42-4261-affd-a5b069b71dc1",
+        "createdDate": "2024-09-12T09:30:39.267Z",
+        "modifiedDate": "2024-09-12T11:16:18.384Z",
+        "state": "Ready",
+        "priority": "Medium",
+        "isDeleted": false,
+        "tagNames": [],
+        "iterations": [],
+        "links": []
+    },
+    {
+        "id": "8d5a1ed2-2227-46fd-82a2-9836fc1a8df6",
+        "versionId": "d9b7a08b-ddad-43b4-93df-42a4566ad579",
+        "versionNumber": 4,
+        "name": "Использование утилиты https://jiangxy.github.io/websocket-debug-tool/",
+        "entityTypeName": "TestCases",
+        "projectId": "21fd094f-eef6-400f-9309-bc96da740f41",
+        "sectionId": "3fe94b1e-5419-4aae-93cc-dcd87f735cb3",
+        "sectionName": "Инструкции",
+        "isAutomated": false,
+        "globalId": 83351,
+        "duration": 300000,
+        "medianDuration": null,
+        "attributes": {
+            "027fe297-34db-47df-92b9-8e2f6b7ae736": "Actual",
+            "879455c8-4e0c-4e65-8e08-c4bfe4aba71f": "c6830247-49ff-418c-86ec-7ef6192c601a",
+            "d44c9bf7-f663-41f5-ba3b-29c7eeb83074": "2199b736-f5db-4591-bbb0-1c0389ac13a8"
+        },
+        "createdById": "e50b613f-4f42-4261-affd-a5b069b71dc1",
+        "modifiedById": "e50b613f-4f42-4261-affd-a5b069b71dc1",
+        "createdDate": "2024-09-12T09:30:39.29Z",
+        "modifiedDate": "2024-09-12T11:16:18.375Z",
+        "state": "Ready",
+        "priority": "Medium",
+        "isDeleted": false,
+        "tagNames": [],
+        "iterations": [],
+        "links": []
+    }
+]
+
+
